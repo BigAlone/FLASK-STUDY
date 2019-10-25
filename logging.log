@@ -1,0 +1,6 @@
+[2019-10-15 17:54:22,580] [WARNING] from [get in views.py at 15]: logged by current_app.logger
+[2019-10-15 17:57:12,681] [WARNING] from [get in views.py at 15]: logged by current_app.logger
+{"asctime":"2019-10-24 16:23:38,812","levelname":"WARNING","funcName":"get","filename": "views.py","lineno": "16","process": "42983","processName": "MainProcess","thread": "123145535492096","threadName": "Thread-1","message": "logged by current_app.logger"}
+{"asctime":"2019-10-24 16:28:45,685","levelname":"ERROR","funcName":"get","filename": "views.py","lineno": "114","process": "43803","processName": "MainProcess","thread": "123145461030912","threadName": "Thread-1","message": "this is a error"}
+{"asctime":"2019-10-24 18:18:43,226","levelname":"ERROR","funcName":"get","filename": "views.py","lineno": "118","process": "53761","processName": "MainProcess","thread": "123145331847168","threadName": "Thread-1","message": "this is a error"}
+{"asctime":"2019-10-24 18:20:06,685","levelname":"ERROR","funcName":"get","filename": "views.py","lineno": "118","process": "53955","processName": "MainProcess","thread": "123145542230016","threadName": "Thread-1","message": "this is a error"}
