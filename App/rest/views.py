@@ -1,24 +1,8 @@
-import logging
 import random
 import datetime
 
-from flask import jsonify
-from flask.logging import default_handler
-
-from App.LogManager.LogFormatter import formatter
-from App.LogManager.LogHandler import LoggerHandlerToMysql
-
-from App.rest import api
+from App.rest import api, logger
 from flask_restful import Resource, marshal_with, fields, marshal
-
-logger = logging.getLogger('file')
-from App.settings import DevelopConfig
-
-SQLALCHEMY_DATABASE_URI = DevelopConfig.SQLALCHEMY_DATABASE_URI
-LoggerHandler = LoggerHandlerToMysql(configdb_str=SQLALCHEMY_DATABASE_URI, table_name="example_log")
-LoggerHandler.setFormatter(formatter)
-# default_handler.setFormatter(formatter)
-logger.addHandler(LoggerHandler)
 
 
 class HelloWorld(Resource):
@@ -59,6 +43,7 @@ class TaskListAPI(Resource):
     #     return abort(404) if len(task) == 0 else task
     def get(self):
         # print(task_list)
+        logger.info('this is a test')
         return task_list
 
 

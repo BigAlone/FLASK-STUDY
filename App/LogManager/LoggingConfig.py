@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-# @File  : logging.py
+# @File  : LoggingConfig.py
 # @Author: Holly
 # @Date  : 2019-10-15
-from App.LogManager.LogFormatter import formatter, RequestFormatter
 
 LOG_CONFIG = {
     'version': 1,  # 该配置写法固定
@@ -60,9 +59,9 @@ LOG_CONFIG = {
         },
         'file': {
             'class': 'logging.FileHandler',
-            'filename': 'logging.log',
+            'filename': 'logs.log',
             'formatter': 'default',
-            'level': 'WARNING'
+            'level': 'ERROR'
         }},
     # 设置root日志对象配置
     'root': {

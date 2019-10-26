@@ -3,7 +3,7 @@ from flask_cors import *
 
 from App import settings
 from App.ext import init_ext
-from App.logging import LOG_CONFIG
+from App.LogManager.LoggingConfig import LOG_CONFIG
 
 
 def create_app(envname):

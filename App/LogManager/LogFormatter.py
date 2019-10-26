@@ -13,7 +13,7 @@ class RequestFormatter(logging.Formatter):
         return super(RequestFormatter, self).format(record)
 
 
-formatter = RequestFormatter(
+RequestFormatter = RequestFormatter(
     '{'
     '"asctime":"%(asctime)s",'
     '"levelname":"%(levelname)s",'
