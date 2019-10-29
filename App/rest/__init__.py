@@ -3,23 +3,24 @@
 # @Author: Holly
 # @Date  : 2019-08-28
 
+import logging
+
 from flask import Blueprint
-from App.settings import DevelopConfig
-from App.LogManager.LogFormatter import formatter
+
+from App.LogManager.LogFormatter import requestformatter
 from App.LogManager.LogHandler import LoggerHandlerToMysql
+from App.settings import DevelopConfig
 
 rest = Blueprint('rest', __name__)
 from flask_restful import Api
 
 api = Api(rest)
-import logging
-
-logger = logging.getLogger('FileLogger')
+dblogger = logging.getLogger('Dblogger')
+consolelog = logging.getLogger('StreamLogger')
 
 SQLALCHEMY_DATABASE_URI = DevelopConfig.SQLALCHEMY_DATABASE_URI
 LoggerHandler = LoggerHandlerToMysql(configdb_str=SQLALCHEMY_DATABASE_URI, table_name="example_log")
-LoggerHandler.setLevel(logging.WARNING)
-LoggerHandler.setFormatter(formatter)
-logger.addHandler(LoggerHandler)
-print(logger.handlers)
+LoggerHandler.setFormatter(requestformatter)
+dblogger.addHandler(LoggerHandler)
+
 from App.rest import views

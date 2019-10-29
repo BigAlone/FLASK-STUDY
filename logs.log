@@ -1,1 +1,4 @@
 {"asctime":"2019-10-26 17:06:46,623","levelname":"INFO","funcName":"get","filename": "views.py","lineno": "46","message": "this is a test"}
+{"asctime":"2019-10-28 11:46:20,038","levelname":"ERROR","funcName":"error_404","filename": "views.py","lineno": "14","message": "404 Not Found"}
+{"asctime":"2019-10-28 11:52:18,134","levelname":"ERROR","funcName":"error_404","filename": "views.py","lineno": "14","message": "404 Not Found"}
+{"asctime":"2019-10-28 11:54:05,020","levelname":"ERROR","funcName":"error_404","filename": "views.py","lineno": "14","message": "404 Not Found"}

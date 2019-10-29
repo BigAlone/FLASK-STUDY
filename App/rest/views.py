@@ -1,53 +1,20 @@
-import random
 import datetime
+import random
 
-from App.rest import api, logger
-from flask_restful import Resource, marshal_with, fields, marshal
+from flask import request
+from flask_restful import Resource, fields, marshal
+
+from App.rest import api, consolelog
 
 
 class HelloWorld(Resource):
     def get(self):
-        logger.info('logged by current_app.logger')
-        logger.warning('logged by current_app.logger')
+        # streamlogger.info('logged by current_app.logger')
+        # streamlogger.warning('logged by current_app.logger')
         return 'Hello World!'
 
 
 api.add_resource(HelloWorld, '/', '/home')
-
-
-class Task(object):
-    def __init__(self, id, title, content):
-        self.id = id
-        self.title = title
-        self.content = content
-
-    def __repr__(self):
-        return self.title
-
-
-task_list = []
-for task in range(1, 3):
-    task_list.append(Task(id=task, title=f"章节{task}", content=f"内容{task}"))
-resource_fields = {
-    'id': fields.Integer(),
-    'title': fields.String(default="未录入"),
-    'content': fields.String(default="无内容")
-}
-
-
-class TaskListAPI(Resource):
-    @marshal_with(resource_fields)
-    # def get(self, task_id):
-    #     task = list(filter(lambda t: t.id == task_id, task_list))
-    #     print(task)
-    #     return abort(404) if len(task) == 0 else task
-    def get(self):
-        # print(task_list)
-        logger.info('this is a test')
-        return task_list
-
-
-api.add_resource(TaskListAPI, '/tasks')
 
 
 class Insurance(object):
@@ -95,20 +62,30 @@ Insurance_fields = {
 
 
 class InsuranceListAPI(Resource):
-    # @marshal_with(Insurance_fields)
-    # def get(self, task_id):
-    #     task = list(filter(lambda t: t.id == task_id, task_list))
-    #     print(task)
-    #     return abort(404) if len(task) == 0 else task
     def get(self):
-        data = {
-            "code": 0,
-            "messsage": "success",
-            "result": marshal(Insurance_list, Insurance_fields)
-            # "result": Insurance_list
-        }
-        logger.error("this is a error")
-        return data
+        try:
+            data = {
+                "code": 0,
+                "messsage": "success",
+                "result": marshal(Insurance_list, Insurance_fields)
+                # "result": Insurance_list
+            }
+            return data
+        except:
+            consolelog.info("需要处理异常")
+            # abort(404)
+
+    def post(self):
+        try:
+            form_data = request.get_data()
+            consolelog.info(form_data)
+            Insurance(insurance_number=insurance, insurance_type=f"出租方案一", insurance_range=insurance_range,
+                      amount=amount,
+                      user=insurance, user_type=random.randint(1, 4), adress=f"上海市长宁区虹桥路188弄{insurance}号",
+                      date=datetime.date.today(),
+                      status=random.randint(1, 4))
+        except:
+            pass
 
 
-api.add_resource(InsuranceListAPI, '/insurance')
+api.add_resource(InsuranceListAPI, '/insurance/')

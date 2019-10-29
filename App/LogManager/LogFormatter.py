@@ -13,12 +13,13 @@ class RequestFormatter(logging.Formatter):
         return super(RequestFormatter, self).format(record)
 
 
-RequestFormatter = RequestFormatter(
+requestformatter = RequestFormatter(
     '{'
     '"asctime":"%(asctime)s",'
     '"levelname":"%(levelname)s",'
     '"funcName":"%(funcName)s",'
-    '"filename": "%(filename)s",'
+    '"filename":"%(filename)s",'
+    '"pathname": "%(pathname)s",'
     '"lineno": "%(lineno)d",'
     '"url": "%(url)s",'
     '"remote_addr": "%(remote_addr)s",'

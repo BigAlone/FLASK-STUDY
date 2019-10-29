@@ -28,19 +28,8 @@ LOG_CONFIG = {
                       '"threadName": "%(threadName)s",'
                       '"message": "%(message)s"}'
         },
-        'requestinfo': {
-            'format':'{'
-            '"asctime":"%(asctime)s",'
-            '"levelname":"%(levelname)s",'
-            '"funcName":"%(funcName)s",'
-            '"filename": "%(filename)s",'
-            '"lineno": "%(lineno)d",'
-            '"process": "%(process)d",'
-            '"processName": "%(processName)s",'
-            '"thread": "%(thread)d",'
-            '"threadName": "%(threadName)s",'
-            '"message": "%(message)s"'
-            '}'
+        'justinfo': {
+            'format': '%(funcName)s[%(lineno)d]:%(message)s'
         }
 
     },
@@ -54,7 +43,7 @@ LOG_CONFIG = {
         'wsgi': {
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',
-            'formatter': 'default',
+            'formatter': 'justinfo',
             'level': 'DEBUG'
         },
         'file': {
@@ -78,6 +67,12 @@ LOG_CONFIG = {
             {'level': 'DEBUG',
              'handlers': ['console', 'file'],
              'propagate': 0},
+        'Dblogger':
+            {
+                'level': "WARNING",
+                'handlers': [],
+                'propagate': 0
+            }
     }
 }
 
