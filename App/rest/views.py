@@ -11,10 +11,10 @@ class HelloWorld(Resource):
     def get(self):
         # streamlogger.info('logged by current_app.logger')
         # streamlogger.warning('logged by current_app.logger')
-        return 'Hello World!'
+        return {'Hello': ' World!'}
 
 
-api.add_resource(HelloWorld, '/', '/home')
+api.add_resource(HelloWorld, '/', '/home/', endpoint='todo_ep')
 
 
 class Insurance(object):
@@ -35,6 +35,7 @@ class Insurance(object):
 
 
 Insurance_list = []
+
 for insurance in range(1, 100):
     year = random.randint(2000, 2019)
     month = random.randint(1, 13)
@@ -89,3 +90,19 @@ class InsuranceListAPI(Resource):
 
 
 api.add_resource(InsuranceListAPI, '/insurance/')
+
+todos = {}
+
+
+class TodoSimple(Resource):
+    def get(self, todo_id):
+        return {todo_id: todos[todo_id]}
+
+    def put(self, todo_id):
+        todos[todo_id] = request.form['data']
+        return {todo_id: todos[todo_id]}
+
+
+
+api.add_resource(TodoSimple, '/simeple/<string:todo_id>/', endpoint='todo_sim')
+

@@ -4,7 +4,5 @@
 # @Date  : 2019-08-28
 
 from flask import Blueprint
-
 main = Blueprint('main', __name__)
-
 from App.main import views
