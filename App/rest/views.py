@@ -103,6 +103,4 @@ class TodoSimple(Resource):
         return {todo_id: todos[todo_id]}
 
 
-
 api.add_resource(TodoSimple, '/simeple/<string:todo_id>/', endpoint='todo_sim')
-

@@ -6,16 +6,12 @@
 import logging
 
 from flask import Blueprint
-
 from App.LogManager.LogFormatter import requestformatter
 from App.LogManager.LogHandler import LoggerHandlerToMysql
 from App.settings import DevelopConfig
-
-rest = Blueprint('rest', __name__, url_prefix='/rest')
 from flask_restful import Api
-
+rest = Blueprint('rest', __name__, url_prefix='/rest')
 api = Api(rest)
-
 dblogger = logging.getLogger('Dblogger')
 consolelog = logging.getLogger('StreamLogger')
 
